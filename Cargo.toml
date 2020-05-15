@@ -1,0 +1,11 @@
+[package]
+name = "neural-network"
+version = "0.1.0"
+authors = ["fabianboesiger <boesiger.fabian@outlook.com>"]
+edition = "2018"
+
+[dependencies]
+rayon = "1.3"
+nalgebra = "0.21"
+rand = "0.7"
+num-traits = "0.2"

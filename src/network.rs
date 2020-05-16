@@ -1,6 +1,6 @@
-use num_traits::{Float, NumOps, NumAssignOps};
-use std::fmt::Debug;
 use ndarray::{Array1, Array2};
+use num_traits::{Float, NumAssignOps, NumOps};
+use std::fmt::Debug;
 
 pub type Vector<N> = Array1<N>;
 pub type Matrix<N> = Array2<N>;
@@ -12,12 +12,11 @@ impl Number for f64 {}
 
 pub trait Network<N>
 where
-N: Number,
+    N: Number,
 {
     /// Runs the network on an input and returns the output.
     fn run(&self, input: &[N]) -> Vec<N>;
 
     /// Trains the network until the target error is reached.
-    fn train(&mut self, target: N, data: Vec<(Vec<N>, Vec<N>)>);    
-  
+    fn train(&mut self, target: N, data: Vec<(Vec<N>, Vec<N>)>);
 }

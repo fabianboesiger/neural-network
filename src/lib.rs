@@ -11,12 +11,15 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let mut network = FeedForward::<f32>::new(&[2, 3, 8, 4, 2]);
-        println!("{:?} {:?}", network.run(&[1.0, 0.0]), network.run(&[0.0, 1.0]));
-        for _ in 0..1000 {
-            network.train(&[1.0, 0.0], &[1.0, 0.0]);
-            network.train(&[0.0, 1.0], &[0.0, 1.0]);
-            println!("{:?} {:?}", network.run(&[1.0, 0.0]), network.run(&[0.0, 1.0]));
-        }
+        let mut network = FeedForward::<f32>::new(&[2, 10, 20, 30, 20, 10, 4]);
+        
+        let data = vec![
+            (vec![0.0, 0.0], vec![1.0, 0.0, 0.0, 0.0]),
+            (vec![0.0, 1.0], vec![0.0, 1.0, 0.0, 0.0]),
+            (vec![1.0, 0.0], vec![0.0, 0.0, 1.0, 0.0]),
+            (vec![1.0, 1.0], vec![0.0, 0.0, 0.0, 1.0])
+        ];
+
+        network.train(0.001, data);
     }
 }
